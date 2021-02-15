@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl,FormGroup, FormGroupName,Validators} from '@angular/forms'
-import {HttpClient} from '@angular/common/http'
-
+import { ApiService } from 'src/app/services/api/api.service';
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
@@ -9,7 +8,9 @@ import {HttpClient} from '@angular/common/http'
 })
 export class SignupComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private apiService:ApiService,
+  ) { }
 
   signupForm = new FormGroup({
     firstname:new FormControl(null,{validators:[Validators.required]}),
@@ -18,14 +19,15 @@ export class SignupComponent implements OnInit {
     email:new FormControl(null,{validators:[Validators.required,Validators.email]}),
     password:new FormControl(null,{validators:[Validators.required]}),
   })
-  signupdata(){
-
-    console.log(this.signupForm.value);
-  }
   get checkSignup(){
-    // HttpClient.c
-    // this.apiService.callAPI("post", body, "user/user_login").subscribe(data => {
-    return this.signupForm.controls
+      return this.signupForm.controls
+  }
+  signupdata(){
+    this.apiService.callAPI("post",this.signupForm.value,"api/user/signup").subscribe((data)=>{
+      console.log('==================');
+      console.log('data===> ', data)
+      console.log('data===> ', data)
+    })
   }
 
   ngOnInit(): void {
