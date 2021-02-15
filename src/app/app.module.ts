@@ -15,7 +15,7 @@ import { Common_Module } from './modules/common/common.module'
     AppRoutingModule,
     BrowserAnimationsModule,
     NgbModule,
-    Common_Module
+    Common_Module,
   ],
   providers: [],
   bootstrap: [AppComponent]
