@@ -11,63 +11,61 @@ export class AddEditPropertyComponent implements OnInit {
 
   constructor(
     private apiService: ApiService,
-    private formBuilder:FormBuilder
+    private formBuilder: FormBuilder
   ) { }
   ngOnInit(): void {
   }
-
-
-  propertyData = this.formBuilder.group({
-    property:this.formBuilder.group({
-        property_name: new FormControl(null, { validators: [Validators.required] }),
-        price: new FormControl(null, { validators: [Validators.required] }),
-        contrary: new FormControl(null, { validators: [Validators.required] }),
-        state: new FormControl(null, { validators: [Validators.required] }),
-        city: new FormControl(null, { validators: [Validators.required] }),
-        house_number: new FormControl(null, { validators: [Validators.required] })
+  propertyForm = this.formBuilder.group({
+    property: this.formBuilder.group({
+      property_name: new FormControl(null, { validators: [Validators.required] }),
+      price: new FormControl(null, { validators: [Validators.required] }),
+      contrary: new FormControl(null, { validators: [Validators.required] }),
+      state: new FormControl(null, { validators: [Validators.required] }),
+      city: new FormControl(null, { validators: [Validators.required] }),
+      house_number: new FormControl(null, { validators: [Validators.required] })
     }),
-    property_detail:this.formBuilder.array([
-      this.formBuilder.group({
-        property_name: new FormControl(null, { validators: [Validators.required] }),
-        price: new FormControl(null, { validators: [Validators.required] }),
-        contrary: new FormControl(null, { validators: [Validators.required] }),
-        state: new FormControl(null, { validators: [Validators.required] }),
-        city: new FormControl(null, { validators: [Validators.required] }),
-        house_number: new FormControl(null, { validators: [Validators.required] }),
-      })
+    discription: this.formBuilder.group({
+      discription: new FormControl(null, { validators: [Validators.required] }),
+    }),
+    property_details: this.formBuilder.array([
+      // this.formBuilder.array([
+        this.formBuilder.group({
+          key: new FormControl(null, { validators: [Validators.required] }),
+          value: new FormControl(null, { validators: [Validators.required] }),
+        }),
+      // ])
+    ]),
+    room_layout: this.formBuilder.array([
+      // this.formBuilder.array([
+        this.formBuilder.group({
+          key: new FormControl(null, { validators: [Validators.required] }),
+          floor: new FormControl(null, { validators: [Validators.required] }),
+          width: new FormControl(null, { validators: [Validators.required] }),
+          height: new FormControl(null, { validators: [Validators.required] }),
+        }),
+      // ])
+    ]),
+    utilities: this.formBuilder.array([
+      // this.formBuilder.array([
+        this.formBuilder.group({
+          key: new FormControl(null, { validators: [Validators.required] }),
+          value: new FormControl(null, { validators: [Validators.required] }),
+        }),
+      // ])
     ])
   })
-
-
-  propertyForm = new FormGroup({
-    property_name: new FormControl(null, { validators: [Validators.required, Validators.email] }),
-    price: new FormControl(null, { validators: [Validators.required] }),
-    contrary: new FormControl(null, { validators: [Validators.required] }),
-    state: new FormControl(null, { validators: [Validators.required] }),
-    city: new FormControl(null, { validators: [Validators.required] }),
-    house_number: new FormControl(null, { validators: [Validators.required] }),
-  })
-  discription = new FormGroup({
-    discription: new FormControl(null, { validators: [Validators.required, Validators.email] }),
-  })
-  // property_details = new FormGroup({
-  //   key: new FormControl(null, { validators: [Validators.required, Validators.email] }),
-  //   value: new FormControl(null, { validators: [Validators.required, Validators.email] }),
-  // })
-  room_layout = new FormGroup({
-    key: new FormControl(null, { validators: [Validators.required, Validators.email] }),
-    floor: new FormControl(null, { validators: [Validators.required, Validators.email] }),
-    width: new FormControl(null, { validators: [Validators.required, Validators.email] }),
-    height: new FormControl(null, { validators: [Validators.required, Validators.email] }),
-  })
-  utilities = new FormGroup({
-    key: new FormControl(null, { validators: [Validators.required, Validators.email] }),
-    value: new FormControl(null, { validators: [Validators.required, Validators.email] }),
-  })
-
-  propertydata(){
-    console.log('this.loginForm.value')
+  propertydata() {
+    console.log('this.propertyForm.value',this.propertyForm.value)
+    this.apiService.callAPI("post", this.propertyForm.value, "api/property/addproperty").subscribe((data) => {
+      console.log(data);
+    })
   }
+  // get propertyDetail(){
+  //   return this.propertyForm.get('property_detail') as FormArray
+  // }
+  // addnewdetail(){
+  //   this.propertyDetail.push(this.propertyForm.property_detail(''))
+  // }
 
 
 

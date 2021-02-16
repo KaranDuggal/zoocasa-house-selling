@@ -4,77 +4,92 @@
   </div>
   <form [formGroup]="propertyForm" (ngSubmit)="propertydata()">
     <!-- [formGroup]="loginForm" (ngSubmit)="logindata()" -->
-    <div class="form-group">
-      <label for="exampleInputEmail1">Property Name</label>
-      <input type="text" formControlName="property_name" class="form-control" placeholder="Enter Your Property Name" />
-    </div>
-    <div class="form-group">
-      <label for="exampleInputPassword1">Price</label>
-      <input type="number" formControlName="price" class="form-control" placeholder="Enter Your property Price" />
-    </div>
-    <div class="form-group">
-      <label for="exampleInputPassword1">Contrary</label>
-      <input type="text" formControlName="contrary" class="form-control" placeholder="Enter Your contrary" />
-    </div>
-    <div class="form-group">
-      <label for="exampleInputPassword1">State</label>
-      <input type="text" formControlName="state" class="form-control" placeholder="Enter Your property Price" />
-    </div>
-    <div class="form-group">
-      <label for="exampleInputPassword1">City</label>
-      <input type="text" formControlName="city" class="form-control" placeholder="Enter Your property Price" />
-    </div>
-    <div class="form-group">
-      <label for="exampleInputPassword1">House Number</label>
-      <input type="text" formControlName="house_number" class="form-control" placeholder="Enter Your property Price" />
+    <hr>
+    <div class="container" formArrayName="property">
+      <h1>Property</h1>
+      <div class="form-group">
+        <label for="exampleInputEmail1">Property Name</label>
+        <input type="text" formControlName="property_name" class="form-control"
+          placeholder="Enter Your Property Name" />
+
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">Price</label>
+        <input type="number" formControlName="price" class="form-control" placeholder="Enter Your property Price" />
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">Contrary</label>
+        <input type="text" formControlName="contrary" class="form-control" placeholder="Enter Your contrary" />
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">State</label>
+        <input type="text" formControlName="state" class="form-control" placeholder="Enter Your property Price" />
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">City</label>
+        <input type="text" formControlName="city" class="form-control" placeholder="Enter Your property Price" />
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">House Number</label>
+        <input type="text" formControlName="house_number" class="form-control"
+          placeholder="Enter Your property Price" />
+      </div>
     </div>
     <hr>
-    <div class="container">
+    <div class="container" formArrayName="property_details">
+      <!-- formArrayName="property_detail" -->
       <h1>Property Details</h1>
-      <div class="form-group">
+      <div class="form-group" [formGroupName]="0">
+        <!-- <div *ngFor="let item of property_detail; index as idx"> -->
         <label for="exampleInputPassword1">key</label>
-        <input type="text" formControlName="house_number" class="form-control" placeholder="Enter Your property Price" />
+        <input type="text" formControlName="key" class="form-control" placeholder="Enter Your property Price" />
         <label for="exampleInputPassword1">Value</label>
-        <input type="text" formControlName="house_number" class="form-control" placeholder="Enter Your property Price" />
+        <input type="text" formControlName="value" class="form-control" placeholder="Enter Your property Price" />
+        <!-- </div> -->
+        <button class="btn btn-secondary m-2">Add More Fields</button>
       </div>
     </div>
     <hr>
     <div class="container">
-      <h1>discription</h1>
-      <div class="form-group">
+      <h1>Discription</h1>
+      <div class="form-group" formArrayName="discription">
         <!-- <label for="exampleInputPassword1">key</label>
         <input type="text" formControlName="house_number" class="form-control" placeholder="Enter Your property Price" /> -->
         <label for="exampleInputPassword1">Value</label>
-        <textarea class="form-control" formControlName="house_number" cols="30" rows="10" placeholder="Enter Your property Price"></textarea>
+        <textarea class="form-control" formControlName="discription" cols="30" rows="10"
+          placeholder="Enter Your property Price"></textarea>
       </div>
     </div>
     <hr>
-    <div class="container">
+    <div class="container" formArrayName="room_layout">
       <h1>Room Layout</h1>
-      <div class="form-group">
-        <label for="exampleInputPassword1">key</label>
-        <input type="text" formControlName="house_number" class="form-control" placeholder="Enter Your property Price" />
+      <div class="form-group" [formGroupName]="0">
+        <label for="exampleInputPassword1">Key</label>
+        <input type="text" formControlName="key" class="form-control" placeholder="Enter Your property Price" />
         <label for="exampleInputPassword1">Floor</label>
-        <input type="text" formControlName="house_number" class="form-control" placeholder="Enter Your property Price" />
+        <input type="text" formControlName="floor" class="form-control" placeholder="Enter Your property Price" />
         <label for="exampleInputPassword1">Width</label>
-        <input type="text" formControlName="house_number" class="form-control" placeholder="Enter Your property Price" />
+        <input type="number" formControlName="width" class="form-control" placeholder="Enter Your property Price" />
         <label for="exampleInputPassword1">height</label>
-        <input type="text" formControlName="house_number" class="form-control" placeholder="Enter Your property Price" />
+        <input type="number" formControlName="height" class="form-control" placeholder="Enter Your property Price" />
+        <button class="btn btn-secondary m-2">Add More Fields</button>
       </div>
     </div>
     <hr>
-    <div class="container">
+    <div class="container" formArrayName="utilities">
       <h1>Utilities</h1>
-      <div class="form-group">
-        <label for="exampleInputPassword1">key</label>
-        <input type="text" formControlName="house_number" class="form-control" placeholder="Enter Your property Price" />
-        <label for="exampleInputPassword1">value</label>
-        <input type="text" formControlName="house_number" class="form-control" placeholder="Enter Your property Price" />
+      <div class="form-group" [formGroupName]="0">
+        <label for="exampleInputPassword1">Key</label>
+        <input type="text" formControlName="key" class="form-control" placeholder="Enter Your property Price" />
+        <label for="exampleInputPassword1">Value</label>
+        <input type="text" formControlName="value" class="form-control" placeholder="Enter Your property Price" />
+        <button class="btn btn-secondary m-2">Add More Fields</button>
       </div>
     </div>
     <hr>
     <div class="text-center">
-      <button type="submit" class="btn btn-primary m-3">Submit</button> <!--   [disabled]='!loginForm.valid' -->
+      <button type="submit" class="btn btn-primary m-3" [disabled]='!propertyForm.valid'>Submit</button>
+      <!--   [disabled]='!loginForm.valid' -->
     </div>
   </form>
 </div>
