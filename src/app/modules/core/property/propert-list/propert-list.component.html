@@ -1,16 +1,26 @@
 <div class="container">
     <div class="row">
-        <div class="col border border-dark m-5">
-            
+        <div  *ngFor="let property of propertyArr" class="m-3">
+            <div class="col border border-dark m-5 text-center">
+                <p><img src="https://picsum.photos/150" alt=""></p>
+                <div>
+                    <h1>price : Rs.{{property.price}}</h1>
+                    <h1>state : {{property.state}}</h1>
+                    <h1>city : {{property.city}}</h1>
+                    <h1>contrary: {{property.contrary}}</h1>
+                </div>
+                <div class="align-middle">
+                    <a type="button" class="btn btn-outline-dark m-2" [routerLink]="['../editproperty/'+property.id]">Detail</a>
+                    <a type="button" class="btn btn-outline-dark m-2" (click)='delete(property.id)'>Delete</a>
+                </div>
+            </div>
         </div>
-        <div class="col border border-dark m-5">
+        
+        <!-- <div class="col border border-dark m-5">
 
         </div>
         <div class="col border border-dark m-5">
 
-        </div>
-        <div class="col border border-dark m-5">
-
-        </div>
+        </div> -->
     </div>
 </div>

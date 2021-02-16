@@ -12,10 +12,15 @@ const routes: Routes = [
     path:'propertys',
     component:PropertListComponent
   },
+  {
+    path:'editproperty/:id',
+    component:AddEditPropertyComponent
+  },  
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
+
 export class PropertyRoutingModule { }
