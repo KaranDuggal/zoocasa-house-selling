@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from 'src/app/services/api/api.service';
 
 @Component({
   selector: 'app-propert-list',
@@ -6,10 +7,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./propert-list.component.css']
 })
 export class PropertListComponent implements OnInit {
+  constructor(
+    private apiService: ApiService,
+  ) { }
 
-  constructor() { }
+  propertyArr = []
 
   ngOnInit(): void {
+  }
+  getdata(){
+    
   }
 
 }
