@@ -13,6 +13,10 @@ const routes: Routes = [
     component:PropertListComponent
   },
   {
+    path:'property/:id',
+    component:AddEditPropertyComponent
+  }, 
+  {
     path:'editproperty/:id',
     component:AddEditPropertyComponent
   },  
