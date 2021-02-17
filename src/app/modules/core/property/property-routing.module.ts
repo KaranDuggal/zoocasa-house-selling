@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AddEditPropertyComponent } from './add-edit-property/add-edit-property.component';
+import { GetPropertyComponent } from './get-property/get-property.component';
 import { PropertListComponent } from './propert-list/propert-list.component';
 
 const routes: Routes = [
@@ -14,7 +15,7 @@ const routes: Routes = [
   },
   {
     path:'property/:id',
-    component:AddEditPropertyComponent
+    component:GetPropertyComponent
   }, 
   {
     path:'editproperty/:id',
